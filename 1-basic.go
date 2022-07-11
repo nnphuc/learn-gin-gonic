@@ -48,7 +48,7 @@ func main() {
 	collection := client.Database("testing").Collection("numbers")
 	res, err := collection.InsertOne(ctx, bson.D{{"name", "pi"}, {"value", 3.14159}})
 	id := res.InsertedID
-	log.Warnf("id {}", id)
+	log.Warnf("id %v", id)
 
 	cur, err := collection.Find(ctx, bson.D{})
 	if err != nil {
