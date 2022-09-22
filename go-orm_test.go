@@ -20,6 +20,10 @@ type Product struct {
 	Price uint
 }
 
+func (p *Product) ToString() string {
+	return fmt.Sprintf("<Product Code=%v, Price=%v>", p.Code, p.Price)
+}
+
 func connectDB() *gorm.DB {
 	var err error
 	dsn := DB_USERNAME + ":" + DB_PASSWORD + "@tcp" + "(" + DB_HOST + ":" + DB_PORT + ")/" + DB_NAME + "?charset=utf8"
@@ -39,6 +43,6 @@ func Test_gorm1(t *testing.T) {
 	db.AutoMigrate(&Product{})
 
 	var p Product
-	db.Where("Price > ?", 5).Find(&p)
-	fmt.Printf("data: %v\n", p)
+	db.Where("Price > ?", 10).Find(&p)
+	fmt.Printf("data: %v \n", p.ToString())
 }

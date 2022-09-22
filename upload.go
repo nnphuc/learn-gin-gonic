@@ -28,13 +28,14 @@ func upload(c *gin.Context) {
 	filepath := "http://localhost:8000/file/" + filename
 	c.JSON(http.StatusOK, gin.H{"filepath": filepath})
 }
-func main() {
-	router := gin.Default()
-	router.LoadHTMLGlob("template/*")
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "select_file.html", gin.H{})
-	})
-	router.POST("/upload", upload)
-	router.StaticFS("/file", http.Dir("public"))
-	router.Run(":8000")
-}
+
+//func main() {
+//	router := gin.Default()
+//	router.LoadHTMLGlob("template/*")
+//	router.GET("/", func(c *gin.Context) {
+//		c.HTML(http.StatusOK, "select_file.html", gin.H{})
+//	})
+//	router.POST("/upload", upload)
+//	router.StaticFS("/file", http.Dir("public"))
+//	router.Run(":8000")
+//}
